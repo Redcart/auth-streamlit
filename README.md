@@ -33,10 +33,13 @@ Make sure you have `uv` installed (or use your preferred Python environment mana
 uv sync
 ```
 
-### 2.Configure authentication
+### 2. Configure authentication 
 
-Create a .streamlit/secrets.toml file:
+You must configure first the Microsoft Entra ID part. All is explained in the medium article.
 
+Then, you have to create a .streamlit/secrets.toml file:
+
+```
 [auth]
 redirect_uri = "http://localhost:8501/oauth2callback"
 cookie_secret = "your-cookie-secret"
@@ -45,8 +48,9 @@ cookie_secret = "your-cookie-secret"
 client_id = "your-client-id"
 client_secret = "your-client-secret"
 server_metadata_url = "https://login.microsoftonline.com/<tenant-id>/v2.0/.well-known/openid-configuration"
+```
 
-⚠️ Do not commit this file.
+⚠️ Remember to not commit this file.
 
 ### 3. Run the app
 
@@ -55,16 +59,16 @@ make run
 ```
 
 ### 🧪 What this demo shows
-Login / logout flow
-Session persistence via cookies
-Access to user information via st.user
+- [x] Secured Login / logout flow
+- [x] Session persistence via cookies
+- [x] Access to user information via st.user
 
 ### ⚠️ Limitations
 
 This setup is great for quick prototypes but has limitations:
 
-cookie duration is not configurable
-relies on a local secrets.toml file
-not ideal for containerized production environments
+- cookie duration is not configurable
+- relies on a local secrets.toml file
+- not ideal for containerized production environments
 
 👉 See the article for a deeper discussion and workarounds.
