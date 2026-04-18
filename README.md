@@ -35,9 +35,7 @@ uv sync
 
 ### 2. Configure authentication 
 
-You must configure first the Microsoft Entra ID part. All is explained in the medium article.
-
-Then, you have to create a .streamlit/secrets.toml file:
+Create a .streamlit/secrets.toml file:
 
 ```
 [auth]
@@ -47,7 +45,7 @@ cookie_secret = "your-cookie-secret"
 [auth.microsoft]
 client_id = "your-client-id"
 client_secret = "your-client-secret"
-server_metadata_url = "https://login.microsoftonline.com/<tenant-id>/v2.0/.well-known/openid-configuration"
+server_metadata_url = "https://login.microsoftonline.com/<your-tenant-id>/v2.0/.well-known/openid-configuration"
 ```
 
 ⚠️ Remember to not commit this file.
@@ -58,14 +56,9 @@ server_metadata_url = "https://login.microsoftonline.com/<tenant-id>/v2.0/.well-
 make run
 ```
 
-### 🧪 What this demo shows
-- [x] Secured Login / logout flow
-- [x] Session persistence via cookies
-- [x] Access to user information via st.user
-
 ### ⚠️ Limitations
 
-This setup is great for quick prototypes but has limitations:
+This setup is great for quick prototypes but has limitations when you want to to deploy at scale:
 
 - cookie duration is not configurable
 - relies on a local secrets.toml file
