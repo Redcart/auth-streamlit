@@ -1,0 +1,10 @@
+[project]
+name = "auth-streamlit"
+version = "0.1.0"
+description = "Built-in authentication in streamlit"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "authlib>=1.6.9",
+    "streamlit>=1.56.0",
+]
