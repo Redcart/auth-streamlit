@@ -1,18 +1,35 @@
 import streamlit as st
 
-st.title("Authentication demo")
 
-if not st.user.is_logged_in:
+def show_login():
     st.write("You are not logged in")
 
     if st.button("Log in with Microsoft"):
-        st.login(provider="microsoft") #okta
-else:
+        st.login(provider="microsoft")
+
+
+def show_authenticated():
     st.write(f"Welcome {st.user.name}")
 
     if st.button("Log out"):
         st.logout()
 
-# Debugging: show user info
-st.write("User info:")
-st.json(st.user.to_dict())
+
+def show_debug_info():
+    with st.expander("🔍 Debug: user info"):
+        st.json(st.user.to_dict())
+
+
+def main():
+    st.title("Authentication demo")
+
+    if not st.user.is_logged_in:
+        show_login()
+    else:
+        show_authenticated()
+
+    show_debug_info()
+
+
+if __name__ == "__main__":
+    main()
